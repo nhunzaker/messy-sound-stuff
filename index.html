@@ -26,11 +26,27 @@
 				width: 100%;
 				height: 100%;
 			}
+
+			#flag {
+				color: #555;
+				font-family: Helvetica, sans-serif;
+				font-size: 18px;
+				font-weight: 100;
+				position: absolute;
+				bottom: 10px;
+				left: 10px;
+			}
+
+			#flag a {
+				color: #aaa;
+			}
 		</style>
 	</head>
 	<body>
 
 		<canvas id="render-area" width="601" height="801"></canvas>
+
+		<p id="flag"><a href="http://www.aerotwist.com/lab/music-dna/">Music DNA</a> hack to account for user voice</p>
 
 		<script src="patch.js"></script>
 		<script src="audio-renderer.js"></script>
