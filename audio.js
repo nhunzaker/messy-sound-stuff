@@ -28,7 +28,7 @@ var soundSource = navigator.getUserMedia({ audio: true }, function (mediaStream)
 	compressor.ratio.value = 20;
 	compressor.attack.value = 0;
 	compressor.release.value = 0;
-	gainNode.gain.value = 0.4;
+	gainNode.gain.value = 0.5;
 
 	mediaStreamSource.connect(compressor);
 

@@ -64,7 +64,7 @@ function AudioRenderer() {
 
       volume = audioData[a] / 255;
 
-      if (volume < 0.8) continue;
+      if (volume < 0.85) continue;
 
       color = normalizedPosition - 0.12 + Math.random() * 0.24;
       color = Math.round(color * 360);
