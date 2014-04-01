@@ -74,7 +74,7 @@ function AudioRenderer() {
       }
 
       ctx.globalAlpha = volume * 0.09;
-      ctx.fillStyle = 'hsl(' + color + ', 80%, 50%)';
+      ctx.fillStyle = 'hsl(' + color + ', 90%, 30%)';
       ctx.beginPath();
       ctx.arc(
         midX + x * distance,

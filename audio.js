@@ -1,6 +1,6 @@
 var audio   = new AudioContext();
 var analysis = audio.createAnalyser();
-var amplitudes = new Uint8Array(1024);
+var amplitudes = new Uint8Array(4000);
 var renderer = new AudioRenderer();
 
 function produceData() {
@@ -12,7 +12,7 @@ var time = 0;
 function updateAndRender() {
 	analysis.getByteFrequencyData(amplitudes);
 
-	time += 0.005;
+	time += 0.002;
 
 	renderer.render(amplitudes, time);
 
