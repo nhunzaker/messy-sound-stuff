@@ -1,18 +1,16 @@
-var audio   = new AudioContext();
-var analysis = audio.createAnalyser();
-var amplitudes = new Uint8Array(4000);
-var renderer = new AudioRenderer();
+var SAMPLES  = 10000
 
-function produceData() {
-    return analysis.getByteTimeDomainData(amplitudes);
-}
+var amplitudes = new Uint8Array(SAMPLES);
+var audio      = new AudioContext();
+var analysis   = audio.createAnalyser();
+var renderer   = new AudioRenderer();
 
 var time = 0;
 
 function updateAndRender() {
 	analysis.getByteFrequencyData(amplitudes);
 
-	time += 0.002;
+	time += 0.005;
 
 	renderer.render(amplitudes, time);
 
@@ -25,20 +23,20 @@ var soundSource = navigator.getUserMedia({ audio: true }, function (mediaStream)
 	var compressor = audio.createDynamicsCompressor()
 	var gainNode = audio.createGain()
 
-	compressor.threshold.value = -32
-	compressor.knee.value = 0
-	compressor.ratio.value = 20
-	compressor.attack.value = 0
-	compressor.release.value = 0
-	gainNode.gain.value = 2
+	compressor.threshold.value = -32;
+	compressor.knee.value = 0;
+	compressor.ratio.value = 20;
+	compressor.attack.value = 0;
+	compressor.release.value = 0;
+	gainNode.gain.value = 0.4;
 
-	mediaStreamSource.connect(compressor)
+	mediaStreamSource.connect(compressor);
 
-	compressor.connect(gainNode)
-
-	gainNode.connect(analysis)
+	compressor.connect(gainNode);
+	gainNode.connect(analysis);
 
 	updateAndRender();
 }, function (err) {
+	alert("Ah snap, something went wrong accessing your microphone.")
 	console.log(err);
 });

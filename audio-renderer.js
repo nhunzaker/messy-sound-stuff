@@ -54,11 +54,11 @@ function AudioRenderer() {
 
     // There is so much number hackery in here.
     // Number fishing is HOW YOU WIN AT LIFE.
-    for (var a = 16; a < audioData.length; a++) {
+    for (var a = 1; a < audioData.length; a++) {
 
       volume = audioData[a] / 255;
 
-      if (volume < 0.75) continue;
+      if (volume < 0.8) continue;
 
       color = normalizedPosition - 0.12 + Math.random() * 0.24;
       color = Math.round(color * 360);
@@ -68,13 +68,13 @@ function AudioRenderer() {
       distance = lnDataDistance * outerRadius;
       size = volume * MAX_DOT_SIZE + Math.random() * 2;
 
-      if (Math.random() > 0.995) {
+      if (Math.random() > 0.75) {
         size *= (audioData[a] * 0.2) * Math.random();
-        volume *= Math.random() * 0.25;
+        volume *= Math.random() * 0.05;
       }
 
-      ctx.globalAlpha = volume * 0.09;
-      ctx.fillStyle = 'hsl(' + color + ', 90%, 30%)';
+      ctx.globalAlpha = volume * 0.5;
+      ctx.fillStyle = 'hsl(' + color + ', 80%, 30%)';
       ctx.beginPath();
       ctx.arc(
         midX + x * distance,
