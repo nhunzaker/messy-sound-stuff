@@ -47,6 +47,11 @@ function AudioRenderer() {
     var volume = 0;
     var power = 0;
 
+	ctx.globalCompositeOperation = "source-over";
+	ctx.fillStyle = "rgba(0, 0, 0, 0.03)";
+	ctx.fillRect(0, 0, canvas.width, canvas.height)
+	ctx.globalCompositeOperation = "lighter";
+
     var x = Math.sin(angle);
     var y = Math.cos(angle);
     var midX = width * 0.5;
