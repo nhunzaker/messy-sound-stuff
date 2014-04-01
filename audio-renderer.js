@@ -47,8 +47,9 @@ function AudioRenderer() {
     var volume = 0;
     var power = 0;
 
+	ctx.globalAlpha = 1;
 	ctx.globalCompositeOperation = "source-over";
-	ctx.fillStyle = "rgba(0, 0, 0, 0.03)";
+	ctx.fillStyle = "rgba(0, 0, 0, 0.02)";
 	ctx.fillRect(0, 0, canvas.width, canvas.height)
 	ctx.globalCompositeOperation = "lighter";
 
@@ -78,7 +79,7 @@ function AudioRenderer() {
         volume *= Math.random() * 0.05;
       }
 
-      ctx.globalAlpha = volume * 0.5;
+      ctx.globalAlpha = volume * 0.6;
       ctx.fillStyle = 'hsl(' + color + ', 80%, 30%)';
       ctx.beginPath();
       ctx.arc(
