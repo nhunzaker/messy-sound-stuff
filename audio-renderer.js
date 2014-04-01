@@ -30,10 +30,6 @@ function AudioRenderer() {
     ctx.globalCompositeOperation = "lighter";
   }
 
-  function clamp(val, min, max) {
-    return Math.min(max, Math.max(val, min));
-  }
-
   this.clear = function() {
     ctx.clearRect(0, 0, width, height);
   };
@@ -74,9 +70,9 @@ function AudioRenderer() {
       distance = lnDataDistance * outerRadius;
       size = volume * MAX_DOT_SIZE + Math.random() * 2;
 
-      if (Math.random() > 0.75) {
+      if (Math.random() < 0.9 - volume) {
         size *= (audioData[a] * 0.2) * Math.random();
-        volume *= Math.random() * 0.05;
+        volume *= Math.random() * 0.15;
       }
 
       ctx.globalAlpha = volume * 0.6;

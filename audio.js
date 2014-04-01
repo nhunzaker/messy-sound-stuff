@@ -13,7 +13,7 @@ function updateAndRender() {
 	time += 0.005;
 
 	renderer.render(amplitudes, time);
-
+	
 	requestAnimationFrame(updateAndRender);
 }
 
