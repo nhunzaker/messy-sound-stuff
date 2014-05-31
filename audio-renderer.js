@@ -35,7 +35,7 @@ module.exports = function() {
 		ctx.translate(width / 2, 0);
 		ctx.globalCompositeOperation = "lighter";
 
-		for (var i = 0, len = domain.length; i < len; i++) {
+		for (var i = 0; i < domain; i++) {
 			var value   = pitch[i];
 			var volume  = power[i];
 			var percent = value / 256;

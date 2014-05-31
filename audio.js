@@ -13,7 +13,7 @@ function updateAndRender() {
 	analyser.getByteTimeDomainData(pitch);
 	analyser.getByteFrequencyData(power);
 
-	renderer.render(pitch, power, new Uint8Array(analyser.frequencyBinCount));
+	renderer.render(pitch, power, analyser.frequencyBinCount);
 
 	requestAnimationFrame(updateAndRender);
 }
