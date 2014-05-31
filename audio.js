@@ -1,42 +1,34 @@
-var SAMPLES  = 10000
+require('./patch');
 
-var amplitudes = new Uint8Array(SAMPLES);
-var audio      = new AudioContext();
-var analysis   = audio.createAnalyser();
-var renderer   = new AudioRenderer();
-
-var time = 0;
+var AudioRenderer = require('./audio-renderer');
+var SAMPLES  = 1024;
+var time     = 0;
+var pitch    = new Uint8Array(SAMPLES);
+var power    = new Uint8Array(SAMPLES);
+var audio    = new AudioContext();
+var renderer = new AudioRenderer();
+var analyser = null;
 
 function updateAndRender() {
-	analysis.getByteFrequencyData(amplitudes);
+	analyser.getByteTimeDomainData(pitch);
+	analyser.getByteFrequencyData(power);
 
-	time += 0.005;
+	renderer.render(pitch, power, new Uint8Array(analyser.frequencyBinCount));
 
-	renderer.render(amplitudes, time);
-	
 	requestAnimationFrame(updateAndRender);
 }
 
+var soundSource = navigator.getUserMedia({ audio: true }, function (stream) {
+	var mediaStreamSource = audio.createMediaStreamSource(stream);
 
-var soundSource = navigator.getUserMedia({ audio: true }, function (mediaStream) {
-	var mediaStreamSource = audio.createMediaStreamSource(mediaStream);
-	var compressor = audio.createDynamicsCompressor()
-	var gainNode = audio.createGain()
+	analyser = audio.createAnalyser();
+    analyser.fftSize = SAMPLES;
+	analyser.smoothingTimeConstant = 0.4;
 
-	compressor.threshold.value = -32;
-	compressor.knee.value = 0;
-	compressor.ratio.value = 20;
-	compressor.attack.value = 0;
-	compressor.release.value = 0;
-	gainNode.gain.value = 0.5;
-
-	mediaStreamSource.connect(compressor);
-
-	compressor.connect(gainNode);
-	gainNode.connect(analysis);
+	mediaStreamSource.connect(analyser);
 
 	updateAndRender();
-}, function (err) {
+}, function(err) {
 	alert("Ah snap, something went wrong accessing your microphone.")
 	console.log(err);
 });

@@ -1,0 +1,31 @@
+{
+  "name": "audio",
+  "version": "0.0.0",
+  "description": "A hack-mash-up between http://www.aerotwist.com/lab/music-dna/ and https://github.com/steveluscher/react-supervanjs-2013.",
+  "main": "audio.js",
+  "dependencies": {
+    "detect-pitch": "~0.1.2",
+    "gulp": "^3.6.0",
+    "gulp-util": "^2.2.14",
+    "browserify": "^3.38.0",
+    "gulp-watch": "^0.5.3",
+    "es6ify": "^1.1.0",
+    "gulp-rename": "^1.2.0",
+    "vinyl-source-stream": "^0.1.1",
+    "fft": "^0.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nhunzaker/audio-fun.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhunzaker/audio-fun/issues"
+  },
+  "homepage": "https://github.com/nhunzaker/audio-fun"
+}
