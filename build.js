@@ -25,7 +25,7 @@ module.exports = function() {
 
 	this.clear = function () {
 		ctx.globalCompositeOperation = 'source-over';
-		ctx.fillStyle = "#000";
+		ctx.fillStyle = "#151111";
 
 		ctx.fillRect(0, 0, width, height);
 	};
@@ -34,6 +34,7 @@ module.exports = function() {
 		ctx.save();
 		ctx.drawImage(canvas, -2, 0);
 		ctx.translate(width / 2, 0);
+
 		ctx.globalCompositeOperation = "lighter";
 
 		for (var i = 0; i < domain; i++) {
